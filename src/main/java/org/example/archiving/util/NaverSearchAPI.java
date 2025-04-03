@@ -26,7 +26,7 @@ public class NaverSearchAPI implements ObjectMapperMixin {
         String clientSecret = EnvLoader.getDotenv().get("NAVER_CLIENT_SECRET");
         if (clientSecret == null) clientSecret = System.getenv("NAVER_CLIENT_SECRET");
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("%s?query=%s".formatted(url, query))) // URL로부터 호출을 시도할 URI를 생성
+                .uri(URI.create("%s?query=%s".formatted(url, query)))
                 .header("X-Naver-Client-Id", clientId)
                 .header("X-Naver-Client-Secret", clientSecret)
                 .build();
