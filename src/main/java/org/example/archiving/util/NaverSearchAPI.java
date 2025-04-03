@@ -21,10 +21,8 @@ public class NaverSearchAPI implements ObjectMapperMixin {
     public List<KeywordSearch> callAPI(NaverSearchParam param) throws Exception {
         String url = "https://openapi.naver.com/v1/search/blog.json";
         String query = URLEncoder.encode(param.query(), StandardCharsets.UTF_8);
-        String clientId = EnvLoader.getDotenv().get("NAVER_CLIENT_ID");
-        if (clientId == null) clientId = System.getenv("NAVER_CLIENT_ID");
-        String clientSecret = EnvLoader.getDotenv().get("NAVER_CLIENT_SECRET");
-        if (clientSecret == null) clientSecret = System.getenv("NAVER_CLIENT_SECRET");
+        String clientId = System.getenv("NAVER_CLIENT_ID");
+        String clientSecret = System.getenv("NAVER_CLIENT_SECRET");
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("%s?query=%s".formatted(url, query)))
                 .header("X-Naver-Client-Id", clientId)
