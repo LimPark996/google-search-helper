@@ -13,6 +13,10 @@ jobs:
       contents: read
       packages: write
 
+    env:
+      NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
+      NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
+
     steps:
       # GitHub에 올라간 내 프로젝트 코드를 작업 환경으로 가져오기
       - name: Checkout repository

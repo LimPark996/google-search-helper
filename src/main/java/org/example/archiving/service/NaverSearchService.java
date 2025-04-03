@@ -23,6 +23,5 @@ public class NaverSearchService implements SearchService
     public List<KeywordSearch> searchByKeyword(String keyword) throws Exception {
         logger.info("searchByKeyword keyword: %s".formatted(keyword));
         return naverSearchAPI.callAPI(new NaverSearchParam(keyword));
-//        return List.of();
     }
 }
