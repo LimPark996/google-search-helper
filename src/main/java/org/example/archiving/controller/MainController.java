@@ -59,11 +59,12 @@ public class MainController {
 
     @PostMapping("/bookmark")
     public String bookmark(@RequestParam("uuid") String uuid, Model model, HttpSession session) throws Exception {
-        // 임시 저장 후 꺼내다 쓴 것
          Map<String, KeywordSearch> temp = (HashMap<String, KeywordSearch>) session.getAttribute("temp");
-//         logger.info(temp.get(uuid).link());
-        String resultID = bookmarkService.createBookmark(temp.get(uuid));
-        return "redirect:/%s".formatted(resultID); // servlet으로 보내기
+         if (temp == null || !temp.containsKey(uuid)) {
+         return "redirect:/";
+        }
+         String resultID = bookmarkService.createBookmark(temp.get(uuid));
+         return "redirect:/%s".formatted(resultID);
     }
 
     @GetMapping("/{uuid}")
